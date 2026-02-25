@@ -1,5 +1,6 @@
 package ru.hwdoc.gamescore;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -46,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
         textViewScore1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                startActivity(intent);
                 Log.d("MainActivity", "Clicked textViewScore1");
                 score1++;
                 updateScore1();
@@ -68,9 +71,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("MainActivity", "onResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("MainActivity", "onPause");
+    }
+
+    @Override
     protected void onStop() {
         super.onStop();
         Log.d("MainActivity", "onStop");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("MainActivity", "onRestart");
     }
 
     private void updateScore1() {
